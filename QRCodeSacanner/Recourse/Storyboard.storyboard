@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Code Scanner View Controller-->
+        <scene sceneID="arH-Rc-l6e">
+            <objects>
+                <viewController storyboardIdentifier="QRCodeScannerViewController" id="CPh-gg-ue1" customClass="QRCodeScannerViewController" customModule="QRCodeSacanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2hk-SA-CgW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yx-3c-afd">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <color key="backgroundColor" red="0.19215686269999999" green="0.21960784310000001" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="從相片中選擇">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7DB-Ce-1CC" firstAttribute="bottom" secondItem="1yx-3c-afd" secondAttribute="bottom" id="4zo-6Q-Z2w"/>
+                            <constraint firstItem="1yx-3c-afd" firstAttribute="height" secondItem="2hk-SA-CgW" secondAttribute="height" multiplier="120:1334" id="E3U-B5-ugZ"/>
+                            <constraint firstItem="1yx-3c-afd" firstAttribute="leading" secondItem="7DB-Ce-1CC" secondAttribute="leading" id="X2h-n4-S8N"/>
+                            <constraint firstAttribute="trailing" secondItem="1yx-3c-afd" secondAttribute="trailing" id="t7T-ek-jsh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7DB-Ce-1CC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wbh-to-ZKN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="333" y="-260"/>
+        </scene>
+    </scenes>
+</document>
