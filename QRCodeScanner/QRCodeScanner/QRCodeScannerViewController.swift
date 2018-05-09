@@ -1,6 +1,6 @@
 //
-//  QRCodeScannerViewController.swift
-//  QRCodeSacanner
+//  QRcodeViewController.swift
+//  QRCodeScanner
 //
 //  Created by 沈冠州 on 2018/5/9.
 //  Copyright © 2018年 沈冠州. All rights reserved.
@@ -9,25 +9,25 @@
 import UIKit
 import AVFoundation
 
-class QRCodeScannerViewController: UIViewController {
-    
+public class QRCodeScannerViewController: UIViewController {
+
     @IBOutlet private weak var cameraView: UIView!
     
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
     var imagePicker = UIImagePickerController()
-
-
-    override func viewDidLoad() {
+    
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.initCamera()
     }
     
     private func initCamera(){
-    
+        
         // 取得 AVCaptureDevice 類別的實體來初始化一個device物件，並提供video
         // 作為媒體型態參數
         let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
@@ -37,17 +37,17 @@ class QRCodeScannerViewController: UIViewController {
         
         var input: AVCaptureDeviceInput!
         do{
-        input = try AVCaptureDeviceInput(device: captureDevice!) as AVCaptureDeviceInput
+            input = try AVCaptureDeviceInput(device: captureDevice!) as AVCaptureDeviceInput
         } catch {
-        input = nil
+            input = nil
         }
         //        let input: AnyObject! = AVCaptureDeviceInput(device: captureDevice)
         
         //            AVCaptureDeviceInput.deviceInputWithDevice(captureDevice,)
         if (error != nil) {
-        // 假如有錯誤產生、 單純記錄其狀況，不再繼續。
-        print("\(error?.localizedDescription)")
-        return
+            // 假如有錯誤產生、 單純記錄其狀況，不再繼續。
+            print("\(error?.localizedDescription)")
+            return
         }
         
         // 初始化 captureSession 物件
@@ -208,7 +208,7 @@ class QRCodeScannerViewController: UIViewController {
 
 extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate{
     
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
         // 檢查 metadataObjects 陣列是否為非空值，它至少需包含一個物件
         if metadataObjects == nil || metadataObjects.count == 0 {
@@ -236,7 +236,7 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate{
 
 extension QRCodeScannerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         self.dismiss(animated: true, completion: { () -> Void in
@@ -245,7 +245,7 @@ extension QRCodeScannerViewController: UIImagePickerControllerDelegate, UINaviga
         })
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
         self.dismiss(animated: true, completion: { () -> Void in
             

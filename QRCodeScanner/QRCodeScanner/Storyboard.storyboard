@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Code Scanner View Controller-->
+        <scene sceneID="fop-o6-4P3">
+            <objects>
+                <viewController storyboardIdentifier="QRCodeScannerViewController" id="QCg-9I-H7q" customClass="QRCodeScannerViewController" customModule="QRCodeScanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Fn-EF-OpM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REI-89-YPN">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65P-Wi-Ixm">
+                                <rect key="frame" x="0.0" y="20" width="375" height="587"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="REI-89-YPN" firstAttribute="leading" secondItem="ml2-UJ-NRC" secondAttribute="leading" id="Mc1-Fl-bxe"/>
+                            <constraint firstItem="REI-89-YPN" firstAttribute="height" secondItem="7Fn-EF-OpM" secondAttribute="height" multiplier="120:1334" id="NvF-zk-a8c"/>
+                            <constraint firstItem="ml2-UJ-NRC" firstAttribute="trailing" secondItem="REI-89-YPN" secondAttribute="trailing" id="Q63-ak-Da2"/>
+                            <constraint firstItem="ml2-UJ-NRC" firstAttribute="bottom" secondItem="REI-89-YPN" secondAttribute="bottom" id="Rxp-ct-Urk"/>
+                            <constraint firstItem="65P-Wi-Ixm" firstAttribute="leading" secondItem="ml2-UJ-NRC" secondAttribute="leading" id="aWh-7L-DIY"/>
+                            <constraint firstItem="REI-89-YPN" firstAttribute="top" secondItem="65P-Wi-Ixm" secondAttribute="bottom" id="asB-me-hC4"/>
+                            <constraint firstItem="65P-Wi-Ixm" firstAttribute="top" secondItem="ml2-UJ-NRC" secondAttribute="top" id="lm3-4z-4uh"/>
+                            <constraint firstItem="ml2-UJ-NRC" firstAttribute="trailing" secondItem="65P-Wi-Ixm" secondAttribute="trailing" id="wau-cE-GCI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ml2-UJ-NRC"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraView" destination="65P-Wi-Ixm" id="JMd-aX-dWs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IOb-FA-t7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60" y="154"/>
+        </scene>
+    </scenes>
+</document>
