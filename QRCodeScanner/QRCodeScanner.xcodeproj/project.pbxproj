@@ -6,6 +6,20 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		03ACF0CC20A40F7E0060DE48 /* UniversalQRCodeScanner */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 03ACF0CD20A40F7E0060DE48 /* Build configuration list for PBXAggregateTarget "UniversalQRCodeScanner" */;
+			buildPhases = (
+				03ACF0D020A40F840060DE48 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = UniversalQRCodeScanner;
+			productName = UniversalQRCodeScanner;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		03B8C74720A2DBF500AD9EA6 /* QRCodeScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 03B8C74520A2DBF500AD9EA6 /* QRCodeScanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03B8C74E20A2DC1600AD9EA6 /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8C74D20A2DC1600AD9EA6 /* QRCodeScannerViewController.swift */; };
@@ -80,7 +94,6 @@
 				03B8C73E20A2DBF500AD9EA6 /* Frameworks */,
 				03B8C73F20A2DBF500AD9EA6 /* Headers */,
 				03B8C74020A2DBF500AD9EA6 /* Resources */,
-				036F1DA820A3E5B000CA2917 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -100,6 +113,10 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "沈冠州";
 				TargetAttributes = {
+					03ACF0CC20A40F7E0060DE48 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					03B8C74120A2DBF500AD9EA6 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
@@ -120,6 +137,7 @@
 			projectRoot = "";
 			targets = (
 				03B8C74120A2DBF500AD9EA6 /* QRCodeScanner */,
+				03ACF0CC20A40F7E0060DE48 /* UniversalQRCodeScanner */,
 			);
 		};
 /* End PBXProject section */
@@ -136,19 +154,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		036F1DA820A3E5B000CA2917 /* Run Script */ = {
+		03ACF0D020A40F840060DE48 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/${PROJECT_DIR}/QRCodeScanner/ios-build-framework-script.sh";
+			shellScript = "#!/bin/sh\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n# Step 1. Build Device and Simulator versions\nxcodebuild -target \"QRCodeScanner\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"QRCodeScanner\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/QRCodeScanner.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/QRCodeScanner.framework/Modules/QRCodeScanner.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/QRCodeScanner.framework/Modules/QRCodeScanner.swiftmodule\"\nfi\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/QRCodeScanner.framework/QRCodeScanner\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/QRCodeScanner.framework/QRCodeScanner\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/QRCodeScanner.framework/QRCodeScanner\"\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/QRCodeScanner.framework\" \"${PROJECT_DIR}\"\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -164,6 +181,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		03ACF0CE20A40F7E0060DE48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JJ8XM5FY5E;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		03ACF0CF20A40F7E0060DE48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JJ8XM5FY5E;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		03B8C74820A2DBF500AD9EA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -329,6 +364,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		03ACF0CD20A40F7E0060DE48 /* Build configuration list for PBXAggregateTarget "UniversalQRCodeScanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03ACF0CE20A40F7E0060DE48 /* Debug */,
+				03ACF0CF20A40F7E0060DE48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		03B8C73C20A2DBF500AD9EA6 /* Build configuration list for PBXProject "QRCodeScanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
