@@ -80,6 +80,7 @@
 				03B8C73E20A2DBF500AD9EA6 /* Frameworks */,
 				03B8C73F20A2DBF500AD9EA6 /* Headers */,
 				03B8C74020A2DBF500AD9EA6 /* Resources */,
+				036F1DA820A3E5B000CA2917 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -133,6 +134,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		036F1DA820A3E5B000CA2917 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/${PROJECT_DIR}/QRCodeScanner/ios-build-framework-script.sh";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		03B8C73D20A2DBF500AD9EA6 /* Sources */ = {
